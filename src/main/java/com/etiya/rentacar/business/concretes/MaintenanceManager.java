@@ -9,9 +9,11 @@ import com.etiya.rentacar.dataAccess.abstracts.CarRepository;
 import com.etiya.rentacar.dataAccess.abstracts.MaintenanceRepository;
 import com.etiya.rentacar.entities.concretes.Car;
 import com.etiya.rentacar.entities.concretes.Maintenance;
+import org.springframework.stereotype.Service;
 
 import java.time.LocalDateTime;
 
+@Service
 public class MaintenanceManager implements MaintenanceService {
     private MaintenanceRepository maintenanceRepository;
     private ModelMapperService modelMapperService;
