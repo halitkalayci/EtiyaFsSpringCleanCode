@@ -33,4 +33,3 @@ public class AuthManager implements AuthService {
         return jwt;
     }
 }
-// Unit Test
