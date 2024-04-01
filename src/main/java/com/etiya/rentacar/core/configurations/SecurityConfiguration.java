@@ -2,6 +2,7 @@ package com.etiya.rentacar.core.configurations;
 
 import com.etiya.rentacar.business.abstracts.UserService;
 import com.etiya.rentacar.core.filters.JwtAuthFilter;
+import com.etiya.rentacar.entities.concretes.Role;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
@@ -44,6 +45,8 @@ public class SecurityConfiguration
                         //.requestMatchers(HttpMethod.POST).authenticated()
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
                         .requestMatchers(HttpMethod.GET).permitAll()
+                        .requestMatchers(HttpMethod.POST, "/api/v1/brands")
+                        .hasAnyAuthority(Role.ADMIN.toString(),Role.MODERATOR.toString())
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
