@@ -23,8 +23,7 @@ public class JwtService
     private long EXPIRATION;
 
     // Boilerplate => Basmakalıp
-    public String generateToken(String userName) {
-        Map<String, Object> claims = new HashMap<>();
+    public String generateToken(Map<String,Object> claims, String userName) {
         return createToken(claims, userName);
     }
 

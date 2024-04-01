@@ -59,3 +59,4 @@ public class User extends BaseEntity<Integer> implements UserDetails
         return true;
     }
 }
+// Unit Test
