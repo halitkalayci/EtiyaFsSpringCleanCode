@@ -7,7 +7,9 @@ import lombok.*;
 import org.springframework.security.core.userdetails.UserDetails;
 
 import java.time.LocalDate;
+import java.util.Collection;
 import java.util.List;
+import java.util.Set;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -26,10 +28,11 @@ public class User extends BaseEntity<Integer> implements UserDetails
     @Column(name="birthDate")
     private LocalDate birthDate;
 
-    @Column(name="roles")
-    @Enumerated(EnumType.STRING)
-    @JoinTable(name="roles", joinColumns = @JoinColumn(name="role_id"))
-    private List<Role> authorities;
+    @ManyToMany(fetch = FetchType.EAGER)
+    @JoinTable(name="user_role",
+               joinColumns = @JoinColumn(name="user_id"),
+               inverseJoinColumns = @JoinColumn(name="role_id"))
+    private Set<Role> authorities;
 
     @Override
     public String getUsername() {

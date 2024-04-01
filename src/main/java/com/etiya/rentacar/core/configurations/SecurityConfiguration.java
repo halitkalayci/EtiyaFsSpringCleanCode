@@ -46,7 +46,7 @@ public class SecurityConfiguration
                         .requestMatchers(WHITE_LIST_URLS).permitAll()
                         .requestMatchers(HttpMethod.GET).permitAll()
                         .requestMatchers(HttpMethod.POST, "/api/v1/brands")
-                        .hasAnyAuthority(Role.ADMIN.toString(),Role.MODERATOR.toString())
+                        .hasAnyAuthority("admin","moderator")
                         .anyRequest().authenticated()
                 )
                 .addFilterBefore(jwtAuthFilter, UsernamePasswordAuthenticationFilter.class);
