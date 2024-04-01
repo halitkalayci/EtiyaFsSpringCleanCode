@@ -33,9 +33,8 @@ public class UserManager implements UserService
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        UserDetails userDetails = userRepository
+        return userRepository
                 .findUserByEmail(username)
                 .orElseThrow(() -> new BusinessException(AuthMessages.LOGIN_FAILED));
-        return userDetails;
     }
 }
