@@ -20,4 +20,10 @@ public class AuthController {
     {
         return authService.login(request);
     }
+
+    @PostMapping("/refresh")
+    public String refreshToken(@RequestBody String refreshToken)
+    {
+        return authService.refreshToken(refreshToken);
+    }
 }

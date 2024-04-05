@@ -34,6 +34,9 @@ public class User extends BaseEntity<Integer> implements UserDetails
                inverseJoinColumns = @JoinColumn(name="role_id"))
     private Set<Role> authorities;
 
+    @OneToMany(mappedBy = "user")
+    private Set<RefreshToken> refreshTokens;
+
     @Override
     public String getUsername() {
         return email;
